@@ -1,0 +1,57 @@
+＃此工作流程将全新安装节点依赖项，构建源代码并在不同版本的节点上运行测试
+＃有关更多信息，请参见：https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+名称：中青自动阅读
+
+在：
+  workflow_dispatch：
+  时间表：
+     - cron的：' 6月1日至12日/ 2 * * * '
+  观看：
+    类型：开始
+职位：
+  建立：
+    运行：ubuntu-latest
+    如果：github.event.repository.owner.id == github.event.sender.id
+    env：
+      YOUTH_READ：$ {{ secrets.YOUTH_READ }}
+      YOUTH_READ2：$ {{ secrets.YOUTH_READ2 }}
+      YOUTH_READ3：$ {{ secrets.YOUTH_READ3 }}
+      YOUTH_READ4：$ {{ secrets.YOUTH_READ4 }}
+    步骤：
+      -用途：actions / checkout @ v1
+      -名称：使用Node.js 12.x
+        用途：actions / setup-node @ v1
+        与：
+          节点版本：12.x
+      -名称：npm install
+        运行：|
+          npm安装
+          
+      -名称：“运行【中青看点自动阅读一】”
+        如果：env.YOUTH_READ
+        运行：|
+          节点Task / Youth_Read.js
+        env：
+          YOUTH_READ：$ {{ secrets.YOUTH_READ }}
+
+      -名称：“运行【中青看点自动阅读二】”
+        如果：env.YOUTH_READ2
+        运行：|
+          节点Task / Youth_Read.js
+        env：
+          YOUTH_READ：$ {{ secrets.YOUTH_READ2 }}
+          
+      -名称：'运行【中青看点自动阅读三】'
+        如果：env.YOUTH_READ3
+        运行：|
+          节点Task / Youth_Read.js
+        env：
+          YOUTH_READ：$ {{ secrets.YOUTH_READ3 }}
+          
+      -名称：'运行【中青看点自动阅读四】'
+        如果：env.YOUTH_READ4
+        运行：|
+          节点Task / Youth_Read.js
+        env：
+          YOUTH_READ：$ {{ secrets.YOUTH_READ4 }}
