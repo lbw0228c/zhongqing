@@ -1,7 +1,7 @@
 ＃此工作流程将全新安装节点依赖项，构建源代码并在不同版本的节点上运行测试
 ＃有关更多信息，请参见：https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
-名称：中青自动阅读
+名称：中青自动阅读2
 
 在：
   workflow_dispatch：
